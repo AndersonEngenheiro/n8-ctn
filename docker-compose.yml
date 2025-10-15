@@ -1,0 +1,16 @@
+services:
+
+  n8n-editor:
+    image: n8nio/n8n:latest
+    container_name: n8-ct
+    ports: 
+      - 5678:5678
+    restart:
+      unless-stopped
+    environment:
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=24
+      - N8N_LOG_LEVEL=error
+    volumes:
+      - ./n8-data:/home/node/.n8n
+    
